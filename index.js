@@ -1,21 +1,21 @@
 // API 1: "https://jsonplaceholder.typicode.com/users"
 // API 2: "https://jsonplaceholder.typicode.com/posts?userId=:id"
 
-
+const userListEl = document.querySelector(".user-list");
 
 async function main () {
     const users = await fetch("https://jsonplaceholder.typicode.com/users");
     const usersData = await users.json();
-    const userListEl = document.querySelector(".user-list");
 
-   userListEl.innerHTML = usersData.map((user) => userHTML(user)).join("");
+    userListEl.innerHTML = usersData.map((user) => userHTML(user)).join("");
 }
 
 main();
 
 function showUserPosts(id) {
+    localStorage.setItem("id", id);
     window.location.href = `/user.html`
-    console.log(id);
+    // console.log(id);
 }
 
 function userHTML(user) {
